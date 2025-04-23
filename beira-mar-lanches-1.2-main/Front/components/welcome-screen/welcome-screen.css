@@ -1,0 +1,72 @@
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--dark);
+  background-image: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url("../../public/telafundo.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.welcome-screen.hidden {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+.welcome-logo {
+  width: 360px;
+  height: 360px;
+  border-radius: 70px;
+  margin-bottom: 2rem;
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+
+.welcome-title {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease;
+}
+
+.welcome-subtitle {
+  color: var(--light);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 600px;
+  font-size: 1.2rem;
+  animation: fadeInUp 1s ease 0.3s both;
+}
+
+.start-button {
+  background-color: var(--primary);
+  color: var(--dark);
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+  animation: fadeInUp 1s ease 0.6s both;
+}
+
+.start-button:hover {
+  transform: translateY(-4px);
+  background-color: var(--primary-light);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:active {
+  transform: translateY(-2px);
+}

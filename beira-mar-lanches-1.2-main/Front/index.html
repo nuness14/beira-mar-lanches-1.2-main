@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beira-Mar Lanches - Autoatendimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="css/global.css">
+  
+  
+  <link rel="stylesheet" href="components/welcome-screen/welcome-screen.css">
+  <link rel="stylesheet" href="components/cart-modal/cart-modal.css">
+  <link rel="stylesheet" href="components/sidebar/sidebar.css">
+  <link rel="stylesheet" href="components/header/header.css">
+  <link rel="stylesheet" href="components/products/products-section.css">
+  <link rel="stylesheet" href="components/footer/footer.css">
+</head>
+<body>
+  
+  <div class="welcome-screen" id="welcomeScreen">
+    <img src="public/logo1.png" class="welcome-logo" alt="Beira-Mar Lanches">
+    <h1 class="welcome-title">Bem-vindo ao Beira-Mar Lanches!</h1>
+    <p class="welcome-subtitle">O melhor da cidade agora com autoatendimento</p>
+    <button class="start-button" id="startButton">INICIAR ATENDIMENTO</button>
+  </div>
+  
+  
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Seu Carrinho</h2>
+        <button class="close-cart" id="closeCart">×</button>
+      </div>
+      <div class="cart-items" id="cartItemsList">
+        
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span> <span id="cartTotal">R$ 0,00</span>
+        </div>
+        <button class="checkout-button" id="checkoutButton">FINALIZAR PEDIDO</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="app">
+  
+    <nav class="sidebar">
+      <img src="public/logo1.png" class="logo-small" alt="Logo">
+      <div class="nav-items">
+        <a class="nav-item active" data-category="destaques">
+          <img src="icones/estrela (2).png" class="nav-icon-img" alt="Destaques">
+          <span class="nav-label">Destaques</span>
+        </a>
+        <a class="nav-item" data-category="lanches">
+          <img src="icones/x-burger.png" class="nav-icon-img" alt="Lanches">
+          <span class="nav-label">Lanches</span>
+        </a>
+        <a class="nav-item" data-category="bebidas">
+          <img src="icones/aplausos-de-vidro.png" class="nav-icon-img" alt="Bebidas">
+          <span class="nav-label">Bebidas</span>
+        </a>
+        <a class="nav-item" data-category="sobremesas">
+          <img src="icones/tigela-de-saque-suave (1).png" class="nav-icon-img" alt="Sobremesas">
+          <span class="nav-label">Sobremesas</span>
+        </a>
+      </div>
+    </nav>
+    
+    <main class="main-content">
+    
+      <header class="header">
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos..." id="searchInput">
+        </div>
+        <div class="user-info">
+          <span class="table-number">Mesa 29</span>
+          <button class="cart-button" id="cartButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            Carrinho (<span id="cartCount">0</span>)
+          </button>
+        </div>
+      </header>
+      
+      <div class="content">
+      
+        <section class="products">
+          <h1 class="products-title" id="productsTitle">DESTAQUES</h1>
+          <div class="products-list" id="productsGrid">
+           
+          </div>
+        </section>
+      </div>
+      
+
+      <footer class="footer">
+        <p>Equipe: Miguel L, Fabiano, Matheus N e Lucas Silveira</p>
+      </footer>
+    </main>
+  </div>
+  
+
+  <script src="js/app.js"></script>
+</body>
+</html>

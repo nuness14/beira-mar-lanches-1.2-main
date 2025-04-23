@@ -1,0 +1,59 @@
+<div class="order-status-modal" id="orderStatusModal">
+  <div class="order-status-content">
+    <div class="order-status-header">
+      <h2>Status do Pedido</h2>
+      <button class="close-status" id="closeOrderStatus">×</button>
+    </div>
+    <div class="order-number">Pedido #<span id="orderNumber">1234</span></div>
+    
+    <div class="status-timeline">
+      <div class="status-step completed" id="statusReceived">
+        <div class="status-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="status-info">
+          <h3>Recebido</h3>
+          <p>Seu pedido foi recebido</p>
+          <span class="status-time" id="timeReceived">12:00</span>
+        </div>
+      </div>
+      
+      <div class="status-step" id="statusPreparing">
+        <div class="status-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="status-info">
+          <h3>Preparando</h3>
+          <p>Seu pedido está sendo preparado</p>
+          <span class="status-time" id="timePreparing">--:--</span>
+        </div>
+      </div>
+      
+      <div class="status-step" id="statusReady">
+        <div class="status-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <div class="status-info">
+          <h3>Pronto</h3>
+          <p>Seu pedido está pronto para retirada</p>
+          <span class="status-time" id="timeReady">--:--</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-items-summary">
+      <h3>Resumo do Pedido</h3>
+      <div id="orderItemsList" class="order-items-list">
+        <!-- Itens do pedido serão inseridos aqui dinamicamente -->
+      </div>
+      <div class="order-total">
+        Total: <span id="orderTotalAmount">R$ 0,00</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="order-status-button" id="orderStatusButton">
+  <div class="status-indicator" id="statusIndicator"></div>
+  <span>Ver Status do Pedido</span>
+</div>

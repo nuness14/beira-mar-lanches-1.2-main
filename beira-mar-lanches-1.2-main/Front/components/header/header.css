@@ -1,0 +1,73 @@
+.header {
+  padding: 1.5rem 2rem;
+  background-color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 5;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: var(--gray-light);
+  color: var(--light);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input:focus {
+  outline: none;
+  background-color: var(--dark);
+  box-shadow: 0 0 0 2px var(--primary-dark);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.table-number {
+  font-weight: 500;
+  background-color: var(--gray-light);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.cart-button {
+  background-color: var(--primary);
+  color: var(--dark);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.cart-button.has-items {
+  animation: pulse 2s infinite;
+}

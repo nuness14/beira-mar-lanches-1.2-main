@@ -1,0 +1,85 @@
+.waiting-screen {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.waiting-screen.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.waiting-content {
+  background-color: var(--gray);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s ease;
+}
+
+.waiting-content h2 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.waiting-content p {
+  margin-bottom: 1rem;
+  color: #b0b0b0;
+}
+
+.waiting-message {
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.spinner-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-top-color: var(--primary);
+  border-bottom-color: var(--primary);
+  animation: spin 1.5s linear infinite;
+}
+
+.estimated-time {
+  background-color: var(--gray-light);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+}
+
+.estimated-time p {
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  color: var(--light);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--dark);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  width: 0%;
+  transition: width 1s linear;
+  border-radius: 4px;
+}
