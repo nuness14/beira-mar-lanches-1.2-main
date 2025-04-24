@@ -329,6 +329,51 @@ const products = {
     }
   }
   
+  // Função para obter os itens do carrinho
+  function getCarrinhoData() {
+    const cartItems = []; // Substitua por lógica para obter os itens reais do carrinho
+    const total = parseFloat(document.getElementById('cartTotal').textContent.replace('R$', '').replace(',', '.').trim());
+    
+    // Exemplo de item no carrinho (substitua pela lógica real)
+    cartItems.push({
+      id: 1, // ID do produto
+      name: "X-Burger", // Nome do produto
+      price: 15.0, // Preço unitário
+      quantity: 2 // Quantidade
+    });
+  
+    return { items: cartItems, total };
+  }
+  
+  // Adicionar evento ao botão de finalizar pedido
+  document.getElementById('checkoutButton').addEventListener('click', async () => {
+    const carrinho = getCarrinhoData();
+  
+    try {
+      const response = await fetch('http://localhost:8080/api/cart/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(carrinho),
+      });
+  
+      if (response.ok) {
+        const order = await response.json();
+        alert(`Pedido realizado com sucesso! Número do pedido: ${order.id}`);
+        
+        // Limpar o carrinho
+        document.getElementById('cartItemsList').innerHTML = '';
+        document.getElementById('cartTotal').textContent = 'R$ 0,00';
+      } else {
+        alert('Erro ao finalizar o pedido. Verifique os itens do carrinho.');
+      }
+    } catch (error) {
+      console.error('Erro ao finalizar o pedido:', error);
+      alert('Erro ao conectar com o servidor.');
+    }
+  });
+  
   // Inicialização quando o DOM estiver carregado
   document.addEventListener("DOMContentLoaded", () => {
     // 1. Botão de iniciar atendimento
@@ -357,4 +402,3 @@ const products = {
     // 4. Exibir produtos iniciais
     displayProducts("destaques")
   })
-  
