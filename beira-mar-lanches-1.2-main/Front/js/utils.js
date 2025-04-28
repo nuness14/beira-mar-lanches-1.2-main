@@ -1,51 +1,58 @@
-// Funções utilitárias
+function searchProducts(query) {
+  const productsGrid = document.getElementById("productsGrid");
+  productsGrid.innerHTML = ""; // Limpa os produtos da tela
 
-// Declaração da variável cart
-const cart = []
+  if (!query.trim()) {
+    // Se o campo de busca estiver vazio, mostra os destaques
+    if (window.productsSection) {
+      window.productsSection.displayProducts("destaques");
+    }
+    return;
+  }
 
-function formatCategoryName(category) {
-  return category.charAt(0).toUpperCase() + category.slice(1)
-}
+  query = query.toLowerCase();
+  const matchedProducts = [];
 
-function getCurrentTime() {
-  const now = new Date()
-  const hours = now.getHours().toString().padStart(2, "0")
-  const minutes = now.getMinutes().toString().padStart(2, "0")
-  return `${hours}:${minutes}`
-}
+  // Buscar em todas as categorias
+  for (const category in window.products) {
+    const categoryProducts = window.products[category];
+    categoryProducts.forEach((product) => {
+      if (
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query)
+      ) {
+        matchedProducts.push(product);
+      }
+    });
+  }
 
-function addToCart(product) {
-  const existingItem = cart.find((item) => item.id === product.id)
-  if (existingItem) {
-    existingItem.quantity += 1
+  // Se não encontrou nada
+  if (matchedProducts.length === 0) {
+    productsGrid.innerHTML = `<p style="text-align: center; color: #777;">Nenhum produto encontrado.</p>`;
   } else {
-    cart.push({ ...product, quantity: 1 })
-  }
+    matchedProducts.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.className = "product-card";
+      productCard.innerHTML = `
+        <div class="product-image-container">
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-description">${product.description}</p>
+          <p class="product-price">R$ ${product.price.toFixed(2)}</p>
+          <button class="add-to-cart" onclick="addToCart(${product.id})">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      `;
+      productsGrid.appendChild(productCard);
+    });
+    // Quando o usuário digitar no campo de busca, chamar a função de busca
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  const query = e.target.value;
+  searchProducts(query);
+});
 
-  // Atualizar carrinho
-  if (window.cartModal) {
-    window.cartModal.updateCart()
   }
 }
-
-function selectCategory(category) {
-  document.querySelectorAll(".nav-item").forEach((item) => {
-    item.classList.remove("active")
-  })
-  document.querySelector(`[data-category="${category}"]`).classList.add("active")
-
-  if (window.productsSection) {
-    window.productsSection.displayProducts(category)
-  }
-}
-
-// Adicionar event listeners para os itens de navegação
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".nav-item").forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault()
-      const category = item.dataset.category
-      selectCategory(category)
-    })
-  })
-})
