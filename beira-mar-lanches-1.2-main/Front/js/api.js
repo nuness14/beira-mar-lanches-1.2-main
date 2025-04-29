@@ -1,9 +1,9 @@
-// URL base da API
+
 const API_BASE_URL = 'http://localhost:8082';
 
-// Funções de API
+
 const api = {
-  // Produtos
+
   async getProducts() {
     const response = await fetch(`${API_BASE_URL}/products`);
     return await response.json();
@@ -19,13 +19,13 @@ const api = {
     return await response.json();
   },
   
-  // Estoque
+
   async checkInventory(productId) {
     const response = await fetch(`${API_BASE_URL}/inventory/${productId}`);
     return await response.json();
   },
   
-  // Pedidos
+
   async createOrder(cartItems) {
     try {
       const response = await fetch(`${API_BASE_URL}/cart/checkout`, {
@@ -37,7 +37,7 @@ const api = {
       });
       
       if (!response.ok) {
-        // Problema com estoque ou outro erro
+    
         throw new Error('Erro ao processar pedido. Verifique o estoque dos produtos.');
       }
       
@@ -48,16 +48,11 @@ const api = {
     }
   }
 };
+let products = {}; 
 
-// Modificações necessárias para o arquivo app.js existente
 
-// Substituir a declaração estática de produtos
-let products = {}; // Será carregado da API
-
-// Função para carregar produtos da API
 async function loadProducts() {
   try {
-    // Carrega todas as categorias
     const categories = ['destaques', 'lanches', 'bebidas', 'sobremesas'];
     products = {};
     
@@ -66,7 +61,7 @@ async function loadProducts() {
       products[category] = productList;
     }
     
-    // Exibir produtos iniciais após carregamento
+  
     displayProducts('destaques');
   } catch (error) {
     console.error('Erro ao carregar produtos:', error);
@@ -74,7 +69,7 @@ async function loadProducts() {
   }
 }
 
-// Modificar a função de checkout para usar a API
+
 async function checkout() {
   try {
     if (cart.length === 0) {
@@ -82,7 +77,7 @@ async function checkout() {
       return;
     }
     
-    // Converter carrinho para o formato esperado pela API
+  
     const cartItems = cart.map(item => ({
       id: item.id,
       name: item.name,
@@ -92,10 +87,10 @@ async function checkout() {
       quantity: item.quantity
     }));
     
-    // Enviar pedido para a API
+   
     const order = await api.createOrder(cartItems);
     
-    // Limpar carrinho após sucesso
+   
     cart.length = 0;
     updateCartCount();
     updateCartItems();

@@ -1,4 +1,4 @@
-// Dados dos produtos
+
 const products = {
     destaques: [
       {
@@ -188,7 +188,7 @@ const products = {
       document.body.removeChild(notification)
     }, 2000)
   }
-  
+  // Feito por Matheus N ate aq 
 
   function displayProducts(category) {
     const productsGrid = document.getElementById("productsGrid")
@@ -230,19 +230,19 @@ const products = {
     })
   }
   
-  // Função para alternar categoria
+
   function selectCategory(category) {
-    // Atualizar navegação
+ 
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.classList.remove("active")
     })
     document.querySelector(`[data-category="${category}"]`).classList.add("active")
   
-    // Exibir produtos
+ 
     displayProducts(category)
   }
   
-  // Função para abrir/fechar carrinho
+
   function toggleCart() {
     const cartModal = document.getElementById("cartModal")
     cartModal.classList.toggle("active")
@@ -252,12 +252,11 @@ const products = {
     }
   }
   
-  // Função para atualizar itens do carrinho
+ 
   function updateCartItems() {
     const cartItemsList = document.getElementById("cartItemsList")
     const cartTotal = document.getElementById("cartTotal")
   
-    // Limpar lista
     cartItemsList.innerHTML = ""
   
     if (cart.length === 0) {

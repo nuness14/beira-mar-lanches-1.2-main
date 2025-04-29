@@ -1,8 +1,8 @@
-// Variáveis globais
+
 const cart = []
 const currentOrder = null
 
-// Classes simplificadas para inicialização
+
 class WelcomeScreen {
   constructor() {
     this.welcomeScreen = document.getElementById("welcomeScreen")
@@ -41,7 +41,7 @@ class CartModal {
   }
 
   updateCart() {
-    // Implementação simplificada
+    
     this.cartCount.textContent = cart.length
   }
 }
@@ -54,7 +54,7 @@ class ProductsSection {
   }
 
   displayProducts(category) {
-    // Implementação simplificada
+
     this.productsGrid.innerHTML = ""
     if (window.products && window.products[category]) {
       window.products[category].forEach((product) => {
@@ -79,13 +79,13 @@ class ProductsSection {
   }
 }
 
-// Inicialização dos componentes
+
 document.addEventListener("DOMContentLoaded", () => {
   const welcomeScreen = new WelcomeScreen()
   const cartModal = new CartModal()
   const productsSection = new ProductsSection()
 
-  // Expor para uso global
+ 
   window.cartModal = cartModal
   window.productsSection = productsSection
 })
