@@ -1,4 +1,6 @@
+// Funções utilitárias
 
+// Declaração da variável cart
 const cart = []
 
 function formatCategoryName(category) {
@@ -20,6 +22,7 @@ function addToCart(product) {
     cart.push({ ...product, quantity: 1 })
   }
 
+  // Atualizar carrinho
   if (window.cartModal) {
     window.cartModal.updateCart()
   }
